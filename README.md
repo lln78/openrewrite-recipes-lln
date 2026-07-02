@@ -1,4 +1,4 @@
-# LLN OpenRewrite recipes
+# pavlau OpenRewrite recipes
 
 For now there is only one recipe. 
 
@@ -14,7 +14,7 @@ _When trace, debug and info log statements use methods for constructing log mess
 
 This recipe is available under the [Moderne Source Available License](https://docs.moderne.io/licensing/moderne-source-available-license).
 
-Run on a maven project : `mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.lln.openrewrite:openrewrite-recipe-lln:LATEST -Drewrite.activeRecipes=org.lln.openrewrite.log4j.WrapExpensiveLogStatementsInConditionals -Drewrite.options=wrapSimpleElements=true`
+Run on a maven project : `mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=eu.pavlau.openrewrite:openrewrite-recipe-pavlau:LATEST -Drewrite.activeRecipes=log4j.eu.pavlau.openrewrite.WrapExpensiveLogStatementsInConditionals -Drewrite.options=wrapSimpleElements=true`
 
 ## Examples
 ##### Example 1 Log4j2 Wrap
@@ -182,38 +182,40 @@ This recipe has an optional configuration options.
 - wrapSimpleElements (false) : Enable Wrapping simple elements in lambdas instead of adding if*Enabled statements
 It can be activated by adding a dependency on `org.openrewrite.recipe:rewrite-logging-frameworks` in your build file or by running a shell command (in which case no build changes are needed):
 
-mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.lln.openrewrite:openrewrite-recipe-lln:LATEST -Drewrite.activeRecipes=org.lln.openrewrite.log4j.WrapExpensiveLogStatementsInConditionals -Drewrite.options=wrapSimpleElements=true
+mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=eu.pavlau.openrewrite:openrewrite-recipe-pavlau:LATEST -Drewrite.activeRecipes=log4j.eu.pavlau.openrewrite.WrapExpensiveLogStatementsInConditionals -Drewrite.options=wrapSimpleElements=true
 
 You can also include the launch in you maven  pom.xml file
+
 ```xml 
+
 <project>
     ...
-  <build>
-      ...
-    <plugins>
+    <build>
         ...
-      <plugin>
-        <groupId>org.openrewrite.maven</groupId>
-        <artifactId>rewrite-maven-plugin</artifactId>
-        <version>6.19.0</version>
-        <configuration>
-          <exportDatatables>true</exportDatatables>
-          <activeRecipes>
-            <recipe>org.lln.openrewrite.log4j.WrapExpensiveLogStatementsInConditionals</recipe>
-          </activeRecipes>
-        </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.lln.openrewrite</groupId>
-            <artifactId>org.lln.openrewrite</artifactId>
-            <version>1.0</version>
-          </dependency>
-        </dependencies>
-      </plugin>
+        <plugins>
+            ...
+            <plugin>
+                <groupId>org.openrewrite.maven</groupId>
+                <artifactId>rewrite-maven-plugin</artifactId>
+                <version>6.19.0</version>
+                <configuration>
+                    <exportDatatables>true</exportDatatables>
+                    <activeRecipes>
+                        <recipe>log4j.eu.pavlau.openrewrite.WrapExpensiveLogStatementsInConditionalseu.pavlau.openrewrite.log4j.WrapExpensiveLogStatementsInConditionals</recipe>
+                    </activeRecipes>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>eu.pavlau.openrewrite</groupId>
+                        <artifactId>eu.pavlau.openrewrite</artifactId>
+                        <version>1.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            ...
+        </plugins>
         ...
-    </plugins>
-      ...
-  </build>
+    </build>
     ...
 </project>
 ```

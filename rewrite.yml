@@ -10,7 +10,7 @@
 
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: org.lln.openrewrite.ApplyRecipeBestPractices
+name: eu.pavlau.openrewrite.ApplyRecipeBestPractices
 displayName: Apply Recipe best practices
 description: Apply best practices to your recipes, through OpenRewrite's best practices recipe & IntelliJ IDEA plugin.
 recipeList:
