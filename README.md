@@ -182,7 +182,7 @@ This recipe has an optional configuration options.
 - wrapSimpleElements (false) : Enable Wrapping simple elements in lambdas instead of adding if*Enabled statements
 It can be activated by adding a dependency on `org.openrewrite.recipe:rewrite-logging-frameworks` in your build file or by running a shell command (in which case no build changes are needed):
 
-mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=eu.pavlau.openrewrite:openrewrite-recipe-pavlau:LATEST -Drewrite.activeRecipes=log4j.eu.pavlau.openrewrite.WrapExpensiveLogStatementsInConditionals -Drewrite.options=wrapSimpleElements=true
+`mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=eu.pavlau.openrewrite:openrewrite-recipe-pavlau:LATEST -Drewrite.activeRecipes=log4j.eu.pavlau.openrewrite.WrapExpensiveLogStatementsInConditionals -Drewrite.options=wrapSimpleElements=true`
 
 You can also include the launch in you maven  pom.xml file
 
